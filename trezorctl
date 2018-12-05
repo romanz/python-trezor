@@ -1011,6 +1011,18 @@ def decrypt_keyvalue(connect, address, key, value):
     return misc.decrypt_keyvalue(client, address_n, key, bytes.fromhex(value))
 
 
+@cli.command(help="Test-only API invocation on the device.")
+@click.argument("arg1")
+@click.pass_obj
+def testonly_call(connect, arg1):
+    client = connect()
+    res = device.testonly_call(client, arg1.encode('ascii'))
+    return {
+        "arg1": res.arg1,
+    }
+
+
+
 # @cli.command(help='Encrypt message.')
 # @click.option('-c', '--coin', default='Bitcoin')
 # @click.option('-d', '--display-only', is_flag=True)

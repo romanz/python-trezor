@@ -190,3 +190,8 @@ def reset(
 def backup(client):
     ret = client.call(proto.BackupDevice())
     return ret
+
+
+@expect(proto.TestOnlyResponse)
+def testonly_call(client, arg1):
+    return client.call(proto.TestOnlyRequest(arg1=arg1))

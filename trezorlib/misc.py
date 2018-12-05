@@ -32,6 +32,15 @@ def get_ecdh_session_key(client, identity, peer_public_key, ecdsa_curve_name=Non
     )
 
 
+@expect(proto.TestOnlyResponse)
+def testonly_call(arg):
+    return client.call(
+        proto.TestOnlyRequest(
+            arg1=arg,
+        )
+    )
+
+
 @expect(proto.CipheredKeyValue, field="value")
 def encrypt_keyvalue(
     client, n, key, value, ask_on_encrypt=True, ask_on_decrypt=True, iv=b""
