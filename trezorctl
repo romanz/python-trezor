@@ -38,6 +38,7 @@ from trezorlib import (
     ethereum,
     exceptions,
     firmware,
+    liquid,
     lisk,
     log,
     messages as proto,
@@ -1882,6 +1883,14 @@ def ontology_sign_ont_id_add_attributes(
 
     return output
 
+
+@cli.command(help="Get Liquid public key for specified path.")
+@click.option("-n", "--address", required=True, help="BIP-32 path, e.g. m/44'/1776'/0'")
+@click.pass_obj
+def liquid_get_public_key(connect, address):
+    client = connect()
+    address_n = tools.parse_path(address)
+    return liquid.get_public_key(client, address_n).hex()
 
 #
 # Main
