@@ -38,6 +38,7 @@ from trezorlib import (
     ethereum,
     exceptions,
     firmware,
+    liquid,
     lisk,
     log,
     messages as proto,
@@ -1417,6 +1418,15 @@ def nem_sign_tx(connect, address, file, broadcast):
     else:
         return payload
 
+#
+# Liquid functions
+#
+
+@cli.command(help="Blind Liquid output.")
+@click.pass_obj
+def liquid_blind_output(connect):
+    client = connect()
+    return liquid.blind_output(client)
 
 #
 # Lisk functions
