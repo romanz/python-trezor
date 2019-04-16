@@ -315,7 +315,7 @@ def format_message(
     pb: MessageType,
     indent: int = 0,
     sep: str = " " * 4,
-    truncate_after: Optional[int] = 256,
+    truncate_after: Optional[int] = 8192,
     truncate_to: Optional[int] = 64,
 ) -> str:
     def mostly_printable(bytes):
